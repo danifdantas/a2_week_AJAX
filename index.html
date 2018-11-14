@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/foundation.css" />
     <link rel="stylesheet" href="css/overrides.css" />
     <script src="js/vendor/modernizr.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.4.1/lottie.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
   </head>
   <body>
@@ -131,7 +132,11 @@
         </div>
 
         <!-- model info block -->
-
+        <!-- preloader goes here => can use it anywhere -->
+        <div class="preloader-wrapper">
+          <!-- draw the preloader animation here -->
+          <div class="preloader"></div>
+        </div>
         <!-- ==== POPULATE THESE ELEMENTS WITH THE QUERY RESULT === -->
         <div class="small-6 columns modelInfo">
           <h4 class="modelName">{{ carModel }}</h4>

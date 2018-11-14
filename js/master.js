@@ -8,8 +8,39 @@ const vm = new Vue({
     carDescription: "",
     carPricing: ""
   },
+  mounted: function() {
+    // listen when Vue is done building
+    console.log("mounted");
 
+    this.addPreloader(document.querySelector(".modelInfo"));
+
+    // get the data for the first car
+    document.querySelector("#F55").click();
+  },
+  updated: function() {
+    // listen for when Vue completes its update / render cycle
+    console.log("updated");
+    // remove the preloader after the page updates
+    let preloader = document.querySelector(".preloader-wrapper");
+
+    setTimeout(function() {
+      preloader.classList.add("hidden");
+      // debugger;
+      // var preload = document.querySelector(".preloader");
+      document.body.appendChild(preloader);
+    }, 3000);
+  },
   methods: {
+    addPreloader(parentEl) {
+      parentEl.appendChild(document.querySelector(".preloader-wrapper"));
+
+      bodymovin.loadAnimation({
+        wrapper: document.querySelector(".preloader"),
+        animType: "svg",
+        loop: true,
+        path: "./data/search.json"
+      });
+    },
     getData(e) {
       //debugger;
       let targetURL = `./includes/connect.php?modelNo=${e.currentTarget.id}`;
